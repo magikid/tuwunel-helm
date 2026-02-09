@@ -3,15 +3,14 @@ This is a helm chart for [tuwunel][homepage] forked from [conduwuit][conduwuit] 
 
 ## TL;DR;
 ```console
-helm repo add tuwunel https://github.com/AreYouLoco/tuwunel-helm/
-helm install --set server_name=matrix.example.org tuwunel/tuwunel
+helm install --set server_name=matrix.example.org oci://ghcr.io/magikid/tuwunel-helm/tuwunel
 ```
 
 ## Installing the Chart
 To install the chart with the release name `my-release`:
 
 ```console
-helm install --name my-release tuwunel/tuwunel
+helm install --name my-release oci://ghcr.io/magikid/tuwunel-helm/tuwunel
 ```
 
 ## Uninstalling the Chart
@@ -67,13 +66,13 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 ```console
 helm install --name my-release \
 	--set ingress.enabled=true \
-	AreYouLoco/tuwunel
+	oci://ghcr.io/magikid/tuwunel-helm/tuwunel
 ```
 
 Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example,
 
 ```console
-helm install --name my-release -f values.yaml AreYouLoco/tuwunel
+helm install --name my-release -f values.yaml oci://ghcr.io/magikid/tuwunel-helm/tuwunel
 ```
 
 Read through the [values.yaml](values.yaml) file.
