@@ -4,8 +4,8 @@
 server_name: ""
 
 image:
-  repository: ghcr.io/matrix-construct/tuwunel
-  tag: v1.4.1
+  repository: forgejo.ellis.link/continuwuation/continuwuity
+  tag: latest-maxperf
   pullPolicy: IfNotPresent
 
 ## The keys under config must be valid for the configuration file of
@@ -16,12 +16,14 @@ config:
     max_request_size: "24 MiB"
     allow_registration: "true"
     registration_token: "supa-dupa-secret-token"
-    allow_federation: "true"
-    trusted_servers: ["mystic.horse"]
+    allow_federation: "false"
+    trusted_servers: []
   global.tls: {}
-  global.well_known:
-    client: "https://matrix.example.com"
-    server: "matrix.example.com:443"
+  global.well_known: {}
+  ## If you are delegating your apex domain, uncomment the client and server lines
+  ## and replace the domains with the domain your service is running on
+  #  client: "https://matrix.example.com"
+  #  server: "matrix.example.com:443"
   global.blurhashing: {}
   global.ldap: {}
   global.antispam: {}
@@ -50,14 +52,14 @@ service:
 
 ingress:
   enabled: false
-  class:
+  class: ""
   # You will probably want to provide either large upload size limits, or no
   #    upload size limit; for example, if using nginx-ingress, include
   #    nginx.ingress.kubernetes.io/proxy-body-size: "0"
   annotations: {}
   path: /
   hosts:
-    - tuwunel
+    - matrix.example.com
   tls: false
 
 ## Persist configuration to a persistent volume
@@ -71,9 +73,10 @@ persistence:
   ##
   data:
     enabled: true
-    existingClaim:
-    storageClass:
+    existingClaim: ""
+    storageClass: ""
     accessMode: ReadWriteOnce
+    # Your database and uploads will live here
     size: 16Gi
 
 resources:
