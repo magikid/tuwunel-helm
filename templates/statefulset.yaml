@@ -75,7 +75,7 @@ spec:
             {{- end }}
           readinessProbe:
             httpGet:
-              path: /_matrix/federation/v1/version
+              path: {{ if .Values.config.global.allow_federation }}/_matrix/federation/v1/version{{ else }}/_tuwunel/server_version{{ end }}
               port: http
             periodSeconds: 2
             failureThreshold: 5
