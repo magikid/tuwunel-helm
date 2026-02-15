@@ -13,9 +13,9 @@ image:
 ## the configuration file
 config:
   global:
-    allow_registration: "true"
+    allow_registration: true
     registration_token: "supa-dupa-secret-token"
-    allow_federation: "false"
+    allow_federation: false
     trusted_servers: []
     tls: {}
     well_known: {}
